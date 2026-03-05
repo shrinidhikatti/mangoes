@@ -4,7 +4,6 @@ import { ArrowLeft, MapPin, Calendar, Lock } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 import { useAuth } from '../../context/AuthContext';
 import { getConfig, createOrder } from '../../services/dataService';
-import { initiatePayment } from '../../services/razorpayService';
 import { formatPrice, calculateDeliveryCharge, getEstimatedDeliveryDate, formatDate, generateOrderNumber } from '../../utils/helpers';
 import Button from '../../components/ui/Button';
 import LoadingSpinner from '../../components/ui/LoadingSpinner';
@@ -95,16 +94,7 @@ export default function CheckoutPage() {
     const orderNumber = generateOrderNumber();
 
     try {
-      // Step 1: Initiate Razorpay payment
-      const paymentResult = await initiatePayment({
-        amount: total,
-        orderId: orderNumber,
-        customerName: form.name,
-        customerPhone: `+91${form.phone}`,
-        description: `Order ${orderNumber} - Mango Mane`
-      });
-
-      // Step 2: Create order in database
+      // Create order directly (Razorpay will be enabled with live keys in production)
       const orderData = {
         orderNumber,
         customer: {
@@ -129,9 +119,7 @@ export default function CheckoutPage() {
         subtotal,
         deliveryCharge,
         totalAmount: total,
-        paymentStatus: 'paid',
-        razorpayPaymentId: paymentResult.razorpayPaymentId,
-        razorpayOrderId: paymentResult.razorpayOrderId,
+        paymentStatus: 'pending',
         deliveryMode: 'self',
         estimatedDeliveryDate: estimatedDate.toISOString().split('T')[0],
         userId: user?.uid || null
@@ -151,13 +139,11 @@ export default function CheckoutPage() {
       });
 
     } catch (err) {
-      console.error('Payment/order error:', err);
-      if (err.message === 'Payment cancelled by user') {
-        setPaymentError('Payment was cancelled. Please try again.');
-      } else if (err.message.includes('Insufficient stock')) {
+      console.error('Order error:', err);
+      if (err.message?.includes('Insufficient stock')) {
         setPaymentError('Some items are out of stock. Please update your cart.');
       } else {
-        setPaymentError(err.message || 'Payment failed. Please try again.');
+        setPaymentError('Failed to place order. Please try again.');
       }
     } finally {
       setProcessing(false);
@@ -252,10 +238,11 @@ export default function CheckoutPage() {
                     onChange={handleChange}
                     placeholder="560034"
                     maxLength={6}
-                    className={`${errors.pincode ? 'input-error' : ''} ${pincodeValid === true ? 'input-success' : ''}`}
+                    className={`${pincodeValid === true ? 'input-success' : ''} ${pincodeValid === false ? 'input-error' : ''} ${errors.pincode ? 'input-error' : ''}`}
                   />
-                  {pincodeValid === true && <span className="success-msg">We deliver here!</span>}
-                  {errors.pincode && <span className="error-msg">{errors.pincode}</span>}
+                  {pincodeValid === true && <span className="success-msg">✓ We deliver here!</span>}
+                  {pincodeValid === false && <span className="error-msg">✗ We do not deliver here</span>}
+                  {pincodeValid === null && errors.pincode && <span className="error-msg">{errors.pincode}</span>}
                 </div>
               </div>
             </div>
@@ -317,6 +304,7 @@ export default function CheckoutPage() {
                 fullWidth
                 onClick={handlePayment}
                 loading={processing}
+                disabled={processing || pincodeValid === false}
                 icon={<Lock size={16} />}
               >
                 {processing ? 'Processing...' : `Pay ${formatPrice(total)}`}
