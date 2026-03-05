@@ -1,7 +1,6 @@
-import { useState, useEffect, useRef } from 'react';
-import { Plus, Search, Edit3, Trash2, Eye, EyeOff, Package, X, Image as ImageIcon } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Plus, Search, Edit3, Trash2, Eye, EyeOff, Package, X } from 'lucide-react';
 import { getProducts, addProduct, updateProduct, deleteProduct, toggleProductAvailability } from '../../services/dataService';
-import { uploadProductImage } from '../../services/storageService';
 import { formatPrice } from '../../utils/helpers';
 import Button from '../../components/ui/Button';
 import Badge from '../../components/ui/Badge';
@@ -23,9 +22,6 @@ export default function ProductsPage() {
   const [editingProduct, setEditingProduct] = useState(null);
   const [formData, setFormData] = useState(emptyProduct);
   const [saving, setSaving] = useState(false);
-  const [imageFiles, setImageFiles] = useState([]);
-  const [imagePreviews, setImagePreviews] = useState([]);
-  const fileInputRef = useRef(null);
 
   const fetchProducts = async () => {
     setLoading(true);
@@ -49,8 +45,6 @@ export default function ProductsPage() {
   const openAddModal = () => {
     setEditingProduct(null);
     setFormData({ ...emptyProduct, sortOrder: products.length + 1 });
-    setImageFiles([]);
-    setImagePreviews([]);
     setShowModal(true);
   };
 
@@ -69,8 +63,6 @@ export default function ProductsPage() {
       seasonStart: product.seasonStart || '',
       seasonEnd: product.seasonEnd || ''
     });
-    setImageFiles([]);
-    setImagePreviews(product.images || []);
     setShowModal(true);
   };
 
@@ -78,33 +70,24 @@ export default function ProductsPage() {
     setShowModal(false);
     setEditingProduct(null);
     setFormData(emptyProduct);
-    setImageFiles([]);
-    setImagePreviews([]);
   };
 
-  const handleImageSelect = (e) => {
-    const files = Array.from(e.target.files);
-    setImageFiles(prev => [...prev, ...files]);
-    files.forEach(file => {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImagePreviews(prev => [...prev, reader.result]);
-      };
-      reader.readAsDataURL(file);
-    });
+  const addImageField = () => {
+    setFormData(prev => ({ ...prev, images: [...prev.images, ''] }));
+  };
+
+  const updateImage = (index, value) => {
+    setFormData(prev => ({
+      ...prev,
+      images: prev.images.map((img, i) => i === index ? value : img)
+    }));
   };
 
   const removeImage = (index) => {
-    const existingCount = formData.images.length;
-    if (index < existingCount) {
-      setFormData(prev => ({
-        ...prev,
-        images: prev.images.filter((_, i) => i !== index)
-      }));
-    } else {
-      setImageFiles(prev => prev.filter((_, i) => i !== (index - existingCount)));
-    }
-    setImagePreviews(prev => prev.filter((_, i) => i !== index));
+    setFormData(prev => ({
+      ...prev,
+      images: prev.images.filter((_, i) => i !== index)
+    }));
   };
 
   const updateVariant = (index, field, value) => {
@@ -135,18 +118,9 @@ export default function ProductsPage() {
     if (!formData.name || !formData.category) return;
     setSaving(true);
     try {
-      let imageUrls = [...formData.images];
-
-      // Upload new images
-      const productId = editingProduct?.id || `temp-${Date.now()}`;
-      for (const file of imageFiles) {
-        const url = await uploadProductImage(file, productId);
-        imageUrls.push(url);
-      }
-
       const productData = {
         ...formData,
-        images: imageUrls,
+        images: formData.images.filter(img => img.trim()),
         variants: formData.variants.filter(v => v.label && v.price),
         stockQuantity: Number(formData.stockQuantity),
         sortOrder: Number(formData.sortOrder)
@@ -353,29 +327,25 @@ export default function ProductsPage() {
                   </div>
                 </div>
 
-                {/* Image Upload */}
+                {/* Image Filenames */}
                 <div className="form-group form-group--full">
-                  <label>Product Images</label>
-                  <div className="image-upload-grid">
-                    {imagePreviews.map((preview, i) => (
-                      <div key={i} className="image-preview">
-                        <img src={preview} alt="" />
-                        <button className="image-remove" onClick={() => removeImage(i)}><X size={12} /></button>
+                  <label>Product Images <small style={{fontWeight:400,color:'var(--text-muted)'}}>— enter filename from public/ folder (e.g. /mango1.jpg)</small></label>
+                  <div className="variants-editor">
+                    {formData.images.map((img, i) => (
+                      <div key={i} className="variant-row">
+                        <input
+                          type="text"
+                          placeholder="/mango1.jpg"
+                          value={img}
+                          onChange={e => updateImage(i, e.target.value)}
+                          style={{ flex: 1 }}
+                        />
+                        {img && <img src={img} alt="" style={{ width: 40, height: 40, objectFit: 'cover', borderRadius: 6, flexShrink: 0 }} onError={e => e.target.style.display='none'} />}
+                        <button className="variant-remove" onClick={() => removeImage(i)}><X size={14} /></button>
                       </div>
                     ))}
-                    <div className="image-upload-area" onClick={() => fileInputRef.current?.click()}>
-                      <ImageIcon size={24} />
-                      <span>Add Image</span>
-                    </div>
+                    <button className="add-variant-btn" onClick={addImageField}>+ Add Image</button>
                   </div>
-                  <input
-                    ref={fileInputRef}
-                    type="file"
-                    accept="image/*"
-                    multiple
-                    onChange={handleImageSelect}
-                    style={{ display: 'none' }}
-                  />
                 </div>
 
                 {/* Variants */}
