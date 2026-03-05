@@ -3,16 +3,10 @@ import {
   query, where, orderBy, serverTimestamp, limit, startAfter
 } from 'firebase/firestore';
 import { db } from '../config/firebase';
-import { decrementStock } from './productService';
 
 const COLLECTION = 'orders';
 
 export async function createOrder(orderData) {
-  // Decrement stock for each item before creating order
-  for (const item of orderData.items) {
-    await decrementStock(item.productId, item.quantity);
-  }
-
   const docRef = await addDoc(collection(db, COLLECTION), {
     ...orderData,
     statusHistory: [
