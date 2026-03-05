@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { ArrowLeft, MapPin, Calendar, Lock } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
@@ -27,6 +27,7 @@ export default function CheckoutPage() {
   const [pincodeValid, setPincodeValid] = useState(null);
   const [processing, setProcessing] = useState(false);
   const [paymentError, setPaymentError] = useState('');
+  const orderPlacedRef = useRef(false);
 
   useEffect(() => {
     async function loadConfig() {
@@ -44,7 +45,7 @@ export default function CheckoutPage() {
 
   if (loading) return <LoadingSpinner size="page" />;
 
-  if (items.length === 0) {
+  if (items.length === 0 && !orderPlacedRef.current) {
     navigate('/cart');
     return null;
   }
@@ -128,6 +129,7 @@ export default function CheckoutPage() {
       await createOrder(orderData);
 
       // Step 3: Clear cart and redirect
+      orderPlacedRef.current = true;
       clearCart();
       navigate('/order-confirmed', {
         state: {
