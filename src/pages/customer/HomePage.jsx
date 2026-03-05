@@ -16,8 +16,8 @@ export default function HomePage() {
   const timerRef = useRef(null);
 
   const carouselImages = [
-    { src: '/m1.avif', alt: 'Fresh mangoes' },
-    { src: '/m2.avif', alt: 'Premium alphonso mangoes' },
+    { src: '/m1.avif?v=2', alt: 'Fresh mangoes' },
+    { src: '/m2.avif?v=2', alt: 'Premium alphonso mangoes' },
     { src: 'https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?w=500&h=600&fit=crop', alt: 'Fresh mango harvest' },
     { src: 'https://images.unsplash.com/photo-1591073113125-e46713c829ed?w=500&h=600&fit=crop', alt: 'Ripe alphonso mangoes' },
   ];
@@ -133,10 +133,10 @@ export default function HomePage() {
                 </div>
               </div>
               <div className="hero-card-tr">
-                <img src="/m2.avif" alt="Premium mangoes" />
+                <img src="/m2.avif?v=2" alt="Premium mangoes" />
               </div>
               <div className="hero-card-bl">
-                <img src="/m3.avif" alt="Alphonso mangoes" />
+                <img src="/m3.avif?v=2" alt="Alphonso mangoes" />
               </div>
               <div className="hero-card-float-tl">
                 <span>🥭</span>
@@ -189,7 +189,7 @@ export default function HomePage() {
 
               <div className="hero-image hero-image--secondary">
                 <img
-                  src="/m3.avif"
+                  src="/m3.avif?v=2"
                   alt="Sun-ripened mangoes"
                 />
               </div>
@@ -292,7 +292,7 @@ export default function HomePage() {
             <div className="story-images">
               <div className="story-image story-image--large">
                 <img
-                  src="/m1.avif"
+                  src="/m1.avif?v=2"
                   alt="Mango orchard"
                   loading="lazy"
                 />
