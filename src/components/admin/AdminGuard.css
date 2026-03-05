@@ -1,0 +1,85 @@
+.admin-guard {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--earth-100);
+  padding: var(--space-xl);
+}
+
+.admin-guard-card {
+  width: 100%;
+  max-width: 400px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-xl);
+  padding: var(--space-3xl) var(--space-2xl);
+  text-align: center;
+  animation: scaleIn var(--duration-normal) var(--ease-out);
+}
+
+.admin-guard-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--gold-50);
+  color: var(--gold-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-lg);
+}
+
+.admin-guard-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: var(--space-xs);
+}
+
+.admin-guard-card p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: 0 auto var(--space-2xl);
+}
+
+.admin-guard-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.password-field {
+  position: relative;
+}
+
+.password-field input {
+  width: 100%;
+  padding: 14px 48px 14px 16px;
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color var(--duration-fast);
+}
+
+.password-field input:focus {
+  border-color: var(--gold-400);
+  box-shadow: 0 0 0 3px var(--gold-100);
+}
+
+.password-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.admin-guard-error {
+  color: #DC2626;
+  font-size: 0.8rem;
+  font-weight: 500;
+}

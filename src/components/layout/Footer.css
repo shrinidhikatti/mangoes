@@ -1,0 +1,151 @@
+.footer {
+  margin-top: auto;
+  position: relative;
+}
+
+.footer-wave {
+  color: var(--earth-800);
+  line-height: 0;
+  margin-bottom: -1px;
+}
+
+.footer-wave svg {
+  width: 100%;
+  height: 40px;
+}
+
+.footer-body {
+  background: var(--earth-800);
+  color: var(--earth-300);
+  padding: var(--space-3xl) 0 var(--space-xl);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: var(--space-3xl);
+}
+
+.footer-brand {
+  max-width: 320px;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.footer-logo .logo-icon {
+  font-size: 2rem;
+}
+
+.footer-logo .logo-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--earth-100);
+  line-height: 1.1;
+}
+
+.footer-logo .logo-tagline {
+  font-size: 0.7rem;
+  color: var(--gold-400);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.footer-desc {
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--earth-400);
+}
+
+.footer-heading {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--earth-100);
+  margin-bottom: var(--space-lg);
+  position: relative;
+}
+
+.footer-heading::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 24px;
+  height: 2px;
+  background: var(--gold-500);
+  border-radius: 1px;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.footer-links a {
+  font-size: 0.875rem;
+  color: var(--earth-400);
+  transition: color var(--duration-fast);
+  width: fit-content;
+}
+
+.footer-links a:hover {
+  color: var(--gold-400);
+}
+
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: 0.875rem;
+  color: var(--earth-400);
+  transition: color var(--duration-fast);
+}
+
+a.contact-item:hover {
+  color: var(--gold-400);
+}
+
+.footer-bottom {
+  margin-top: var(--space-3xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--earth-700);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: var(--earth-500);
+}
+
+.footer-credit {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--saffron-400);
+}
+
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: var(--space-sm);
+    text-align: center;
+  }
+}

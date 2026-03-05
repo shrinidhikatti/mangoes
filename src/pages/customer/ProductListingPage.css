@@ -1,0 +1,115 @@
+/* ===== BREADCRUMB ===== */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: var(--space-lg) 0 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.breadcrumb a {
+  color: var(--text-muted);
+  transition: color var(--duration-fast);
+}
+
+.breadcrumb a:hover {
+  color: var(--gold-600);
+}
+
+.breadcrumb span {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* ===== LISTING HEADER ===== */
+.listing-header {
+  position: relative;
+  padding: var(--space-2xl) 0 var(--space-3xl);
+  overflow: hidden;
+}
+
+.listing-header-content {
+  position: relative;
+  z-index: 1;
+}
+
+.listing-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-sm);
+}
+
+.listing-desc {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-md);
+}
+
+.listing-count {
+  display: inline-flex;
+  align-items: center;
+  background: var(--gold-50);
+  color: var(--gold-700);
+  padding: 4px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.listing-header-decoration {
+  position: absolute;
+  top: -40px;
+  right: -60px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--gold-100) 0%, transparent 70%);
+  opacity: 0.6;
+  z-index: 0;
+}
+
+/* ===== PRODUCTS ===== */
+.listing-products {
+  padding-bottom: var(--space-4xl);
+}
+
+/* ===== EMPTY STATE ===== */
+.listing-empty {
+  text-align: center;
+  padding: var(--space-4xl) var(--space-xl);
+}
+
+.listing-empty-icon {
+  font-size: 4rem;
+  display: block;
+  margin-bottom: var(--space-lg);
+}
+
+.listing-empty h3 {
+  font-size: 1.5rem;
+  margin-bottom: var(--space-sm);
+}
+
+.listing-empty p {
+  color: var(--text-muted);
+  margin: 0 auto;
+}
+
+/* ===== COMING SOON ===== */
+.listing-coming-soon {
+  margin-top: var(--space-4xl);
+  padding-top: var(--space-3xl);
+  border-top: 1px solid var(--border-light);
+}
+
+.coming-soon-title {
+  font-size: 1.5rem;
+  margin-bottom: var(--space-xs);
+}
+
+.coming-soon-desc {
+  color: var(--text-muted);
+  margin-bottom: var(--space-xl);
+}
