@@ -27,7 +27,9 @@ export async function getProductsByCategory(category) {
 
 export async function getAvailableProducts() {
   if (!USE_FIREBASE) return mockProducts.filter(p => p.isAvailable);
-  return productService.getAvailableProducts();
+  const prods = await productService.getAvailableProducts();
+  if (prods.length === 0) return mockProducts.filter(p => p.isAvailable);
+  return prods;
 }
 
 export async function getProduct(id) {
@@ -136,7 +138,9 @@ export async function getCategories() {
 
 export async function getActiveCategories() {
   if (!USE_FIREBASE) return mockCategories.filter(c => c.isActive);
-  return categoryService.getActiveCategories();
+  const cats = await categoryService.getActiveCategories();
+  if (cats.length === 0) return mockCategories.filter(c => c.isActive);
+  return cats;
 }
 
 export async function addCategory(data) {

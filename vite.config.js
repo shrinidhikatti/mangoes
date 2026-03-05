@@ -31,11 +31,11 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,ico,png,svg,avif,woff2}'],
         runtimeCaching: [
           {
-            urlPattern: /^https:\/\/images\.unsplash\.com\/.*/i,
+            urlPattern: /\/mango\d+\.jpg$/i,
             handler: 'CacheFirst',
             options: {
-              cacheName: 'unsplash-images',
-              expiration: { maxEntries: 30, maxAgeSeconds: 60 * 60 * 24 * 7 }
+              cacheName: 'local-images',
+              expiration: { maxEntries: 20, maxAgeSeconds: 60 * 60 * 24 * 30 }
             }
           },
           {

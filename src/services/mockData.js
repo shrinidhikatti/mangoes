@@ -3,7 +3,7 @@ export const mockCategories = [
     id: 'cat-1',
     name: 'Mangoes',
     slug: 'mangoes',
-    image: 'https://images.unsplash.com/photo-1553279768-865429fa0078?w=400&h=300&fit=crop',
+    image: '/mango1.jpg',
     isActive: true,
     sortOrder: 1,
     description: 'Premium varieties from North Karnataka orchards'
@@ -12,7 +12,7 @@ export const mockCategories = [
     id: 'cat-2',
     name: 'Sweets',
     slug: 'sweets',
-    image: 'https://images.unsplash.com/photo-1666190094665-2515025cebad?w=400&h=300&fit=crop',
+    image: '/mango5.jpg',
     isActive: true,
     sortOrder: 2,
     description: 'Traditional North Karnataka delicacies'
@@ -21,7 +21,7 @@ export const mockCategories = [
     id: 'cat-3',
     name: 'Fruits',
     slug: 'fruits',
-    image: 'https://images.unsplash.com/photo-1619566636858-adf3ef46400b?w=400&h=300&fit=crop',
+    image: '/mango6.jpg',
     isActive: true,
     sortOrder: 3,
     description: 'Seasonal fresh fruits from local farms'
@@ -34,10 +34,7 @@ export const mockProducts = [
     name: 'Alphonso Mango',
     category: 'mangoes',
     description: 'The king of mangoes. Premium Alphonso (Hapus) mangoes handpicked from our family orchards in North Karnataka. Known for their rich, creamy texture and intensely sweet flavor with hints of citrus. Each mango is naturally ripened for perfect taste.',
-    images: [
-      'https://images.unsplash.com/photo-1553279768-865429fa0078?w=600&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?w=600&h=600&fit=crop'
-    ],
+    images: ['/mango1.jpg', '/mango2.jpg'],
     variants: [
       { label: '1 Dozen (12 pcs)', price: 600, weight: 3 },
       { label: '2 Dozen (24 pcs)', price: 1100, weight: 6 },
@@ -55,10 +52,7 @@ export const mockProducts = [
     name: 'Badami Mango',
     category: 'mangoes',
     description: 'Also called Karnataka Alphonso, Badami mangoes are a regional pride. Slightly less sweet than Alphonso but incredibly aromatic. Their smooth, fiberless flesh melts in your mouth. Sourced from family-owned orchards in North Karnataka.',
-    images: [
-      'https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?w=600&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1553279768-865429fa0078?w=600&h=600&fit=crop'
-    ],
+    images: ['/mango3.jpg', '/mango4.jpg'],
     variants: [
       { label: '1 Dozen (12 pcs)', price: 400, weight: 3 },
       { label: '2 Dozen (24 pcs)', price: 750, weight: 6 },
@@ -77,7 +71,7 @@ export const mockProducts = [
     category: 'mangoes',
     description: 'The versatile Totapuri mango with its distinctive parrot-beak shape. Perfect for making aam ras, mango dal, and pickles. Tangy-sweet flavor that brightens any dish. Farm-fresh from our orchards.',
     images: [
-      'https://images.unsplash.com/photo-1591073113125-e46713c829ed?w=600&h=600&fit=crop'
+      '/mango5.jpg'
     ],
     variants: [
       { label: '2 kg', price: 200, weight: 2 },
@@ -97,7 +91,7 @@ export const mockProducts = [
     category: 'sweets',
     description: 'The legendary Belagavi Kunda — a rich, caramelized milk sweet that\'s a hallmark of North Karnataka. Made with traditional methods by local artisans, this golden-brown delicacy is slow-cooked for hours to achieve its signature grainy texture and deep caramel flavor.',
     images: [
-      'https://images.unsplash.com/photo-1666190094665-2515025cebad?w=600&h=600&fit=crop'
+      '/mango6.jpg'
     ],
     variants: [
       { label: '250 gm Box', price: 200, weight: 0.25 },
@@ -115,7 +109,7 @@ export const mockProducts = [
     category: 'sweets',
     description: 'Authentic Dharwad Pedha made from fresh milk, sugar, and cardamom. This GI-tagged sweet from neighbouring Dharwad has a distinctive taste that comes from the unique local milk and traditional preparation. Soft, melt-in-mouth texture.',
     images: [
-      'https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?w=600&h=600&fit=crop'
+      '/mango7.jpg'
     ],
     variants: [
       { label: '250 gm Box', price: 180, weight: 0.25 },
@@ -133,7 +127,7 @@ export const mockProducts = [
     category: 'fruits',
     description: 'Sweet and juicy Bangalore Blue grapes, freshly harvested from the vineyards of North Karnataka. Deep purple-black color with a rich, sweet-tangy flavor. Perfect for eating fresh or making juice.',
     images: [
-      'https://images.unsplash.com/photo-1619566636858-adf3ef46400b?w=600&h=600&fit=crop'
+      '/mango2.jpg'
     ],
     variants: [
       { label: '1 kg', price: 120, weight: 1 },
