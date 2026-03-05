@@ -41,8 +41,8 @@ export const DEFAULT_CONFIG = {
   },
   orderCutoffTime: '20:00',
   minimumOrderValue: 300,
-  contactPhone: '+91XXXXXXXXXX',
-  contactWhatsApp: '+91XXXXXXXXXX',
+  contactPhone: '+919590677077',
+  contactWhatsApp: '+919590677077',
   isStoreOpen: true,
   storeClosedMessage: 'We are currently closed for the season. See you next summer!'
 };

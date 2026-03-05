@@ -48,7 +48,7 @@ export default function Footer() {
                   <Phone size={16} />
                   <span>+91 95906 77077</span>
                 </a>
-                <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" className="contact-item">
+                <a href="https://wa.me/919590677077?text=Hi%2C%20I%27m%20interested%20in%20ordering%20mangoes%20from%20Mango%20Mane%20%F0%9F%A5%AD" target="_blank" rel="noopener noreferrer" className="contact-item">
                   <MessageCircle size={16} />
                   <span>WhatsApp Us</span>
                 </a>

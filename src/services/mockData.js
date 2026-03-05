@@ -159,7 +159,7 @@ export const mockConfig = {
   orderCutoffTime: '20:00',
   minimumOrderValue: 300,
   contactPhone: '+919876543210',
-  contactWhatsApp: '+919876543210',
+  contactWhatsApp: '+919590677077',
   isStoreOpen: true,
   storeClosedMessage: 'We are currently closed for the season. See you next summer!'
 };
