@@ -306,7 +306,7 @@
 }
 
 @media (max-width: 768px) {
-  .top-bar-item:first-child {
+  .top-bar {
     display: none;
   }
 

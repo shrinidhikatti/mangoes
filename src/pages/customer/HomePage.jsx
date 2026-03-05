@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Truck, Shield, Clock, Leaf, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, Truck, Shield, Clock, Leaf, ChevronLeft, ChevronRight, ArrowDown } from 'lucide-react';
 import { getActiveCategories, getAvailableProducts, getConfig } from '../../services/dataService';
 import ProductCard from '../../components/product/ProductCard';
 import Button from '../../components/ui/Button';
@@ -77,6 +77,7 @@ export default function HomePage() {
           <div className="hero-gradient" />
           <div className="hero-pattern" />
         </div>
+
         <div className="container hero-content">
           <div className="hero-text">
             <div className="hero-badge animate-fade-in-up">
@@ -97,14 +98,62 @@ export default function HomePage() {
                   Shop Mangoes
                 </Button>
               </Link>
-              <Link to="/products/sweets">
-                <Button variant="outline" size="lg">
-                  Explore Sweets
-                </Button>
-              </Link>
+            </div>
+            <div className="hero-trust animate-fade-in-up delay-3">
+              {[
+                { emoji: '🌿', label: 'Farm Fresh' },
+                { emoji: '🚗', label: 'Same-Day Delivery' },
+                { emoji: '⭐', label: 'Premium Quality' },
+              ].map(t => (
+                <div key={t.label} className="hero-trust-item">
+                  <span>{t.emoji}</span>
+                  <span>{t.label}</span>
+                </div>
+              ))}
             </div>
           </div>
           <div className="hero-visual animate-fade-in-up delay-2">
+            {/* Mobile: stacked image cards (like MrCakeBakers style) */}
+            <div className="hero-mobile-cards">
+              <div className="hero-card-main">
+                {/* Carousel inside main card */}
+                {carouselImages.map((img, i) => (
+                  <div key={i} className={`hero-card-slide ${i === activeSlide ? 'active' : ''}`}>
+                    <img src={img.src} alt={img.alt} loading="eager" />
+                  </div>
+                ))}
+                <div className="hero-card-dots">
+                  {carouselImages.map((_, i) => (
+                    <span key={i} className={`hero-card-dot ${i === activeSlide ? 'active' : ''}`} />
+                  ))}
+                </div>
+                <div className="hero-card-price">
+                  <span>Starting from</span>
+                  <strong>₹499/kg</strong>
+                </div>
+              </div>
+              <div className="hero-card-tr">
+                <img src="/m2.avif" alt="Premium mangoes" />
+              </div>
+              <div className="hero-card-bl">
+                <img src="/m3.avif" alt="Alphonso mangoes" />
+              </div>
+              <div className="hero-card-float-tl">
+                <span>🥭</span>
+                <div>
+                  <strong>Alphonso</strong>
+                  <small>100% Natural</small>
+                </div>
+              </div>
+              <div className="hero-card-float-br">
+                <span>🚚</span>
+                <div>
+                  <strong>Free Delivery</strong>
+                  <small>Above ₹{config?.deliveryCharges?.freeAbove || 500}</small>
+                </div>
+              </div>
+            </div>
+
             <div className="hero-image-stack">
               <div className="hero-carousel">
                 {carouselImages.map((img, i) => (
@@ -153,6 +202,9 @@ export default function HomePage() {
               </div>
             </div>
           </div>
+        </div>
+        <div className="hero-scroll" aria-hidden="true">
+          <ArrowDown size={16} />
         </div>
       </section>
 

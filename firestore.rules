@@ -3,11 +3,16 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // Helper: Check if user is admin (role stored in users collection)
+    // Helper: Check if user is admin
+    // Admin = vijomarketing1@gmail.com OR role == "admin" in users collection
     function isAdmin() {
-      return request.auth != null &&
-        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
-        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == "admin";
+      return request.auth != null && (
+        request.auth.token.email == 'vijomarketing1@gmail.com'
+        || (
+          exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+          get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == "admin"
+        )
+      );
     }
 
     function isAuthenticated() {

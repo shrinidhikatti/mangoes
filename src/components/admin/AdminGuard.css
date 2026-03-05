@@ -41,10 +41,85 @@
   margin: 0 auto var(--space-2xl);
 }
 
+.admin-google-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-md);
+  background: white;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background var(--duration-fast), box-shadow var(--duration-fast);
+  margin-bottom: var(--space-md);
+}
+
+.admin-google-btn:hover {
+  background: var(--earth-50);
+  box-shadow: var(--shadow-sm);
+}
+
+.admin-google-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.admin-divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.admin-divider::before,
+.admin-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border-light);
+}
+
 .admin-guard-form {
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
+}
+
+.admin-guard-form input:not(.password-field input) {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color var(--duration-fast);
+  box-sizing: border-box;
+}
+
+.admin-guard-form input:focus {
+  border-color: var(--gold-400);
+  box-shadow: 0 0 0 3px var(--gold-100);
+}
+
+.admin-owner-fallback {
+  margin-top: var(--space-xl);
+  text-align: left;
+  border-top: 1px solid var(--border-light);
+  padding-top: var(--space-md);
+}
+
+.admin-owner-fallback summary {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  user-select: none;
 }
 
 .password-field {
