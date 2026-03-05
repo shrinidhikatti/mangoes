@@ -7,8 +7,10 @@ export function formatPrice(amount) {
 export function generateOrderNumber() {
   const date = new Date();
   const dateStr = date.toISOString().slice(0, 10).replace(/-/g, '');
-  const random = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
-  return `ORD-${dateStr}-${random}`;
+  const tsFragment = Date.now().toString(36).slice(-4).toUpperCase();
+  const randomBytes = crypto.getRandomValues(new Uint8Array(3));
+  const random = Array.from(randomBytes).map(b => b.toString(16).padStart(2, '0')).join('').toUpperCase();
+  return `ORD-${dateStr}-${tsFragment}${random}`;
 }
 
 export function getEstimatedDeliveryDate(cutoffTime = '20:00') {

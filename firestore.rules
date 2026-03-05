@@ -3,16 +3,29 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // Helper: Check if user is admin
+    // Helper: Check if user is admin (role stored in users collection)
     function isAdmin() {
       return request.auth != null &&
         exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == "admin";
     }
 
-    // Helper: Check if user is authenticated
     function isAuthenticated() {
       return request.auth != null;
+    }
+
+    // Validate order data on creation — prevent price tampering
+    function isValidOrder() {
+      let data = request.resource.data;
+      return data.keys().hasAll(['orderNumber', 'items', 'totalAmount', 'subtotal', 'customer'])
+        && data.totalAmount is number
+        && data.totalAmount > 0
+        && data.subtotal is number
+        && data.subtotal > 0
+        && data.items is list
+        && data.items.size() > 0
+        && data.orderNumber is string
+        && data.orderNumber.size() > 0;
     }
 
     // Products: Anyone can read, only admin can write
@@ -27,14 +40,20 @@ service cloud.firestore {
       allow create, update, delete: if isAdmin();
     }
 
-    // Orders: Anyone can create (guest checkout), only admin can read/update
+    // Orders:
+    // - Anyone can create (guest checkout) but data must be valid
+    // - Logged-in users can read ONLY their own orders
+    // - Admin can read and update all orders
+    // - No one can delete orders
     match /orders/{orderId} {
-      allow create: if true;
-      allow read, update: if isAdmin();
-      allow delete: if false; // Never delete orders
+      allow create: if isValidOrder();
+      allow read: if isAdmin()
+        || (isAuthenticated() && resource.data.userId == request.auth.uid);
+      allow update: if isAdmin();
+      allow delete: if false;
     }
 
-    // Users: Read/write own document, admin can read all
+    // Users: Read/write own document only, admin can read all
     match /users/{userId} {
       allow read: if isAuthenticated() && (request.auth.uid == userId || isAdmin());
       allow create: if isAuthenticated() && request.auth.uid == userId;
