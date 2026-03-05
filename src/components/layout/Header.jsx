@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { ShoppingBag, Menu, X, MapPin, Phone, User, LogOut, ClipboardList } from 'lucide-react';
+import { ShoppingBag, Menu, X, MapPin, Phone, User, LogOut, ClipboardList, LayoutDashboard } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 import { useAuth } from '../../context/AuthContext';
 import './Header.css';
@@ -43,6 +43,7 @@ export default function Header() {
     navigate('/');
   };
 
+  const ADMIN_EMAIL = 'vijomarketing1@gmail.com';
   const isAdmin = location.pathname.startsWith('/admin');
   if (isAdmin) return null;
 
@@ -95,6 +96,12 @@ export default function Header() {
                       <span className="user-dropdown-name">{user.displayName || 'Account'}</span>
                       <span className="user-dropdown-email">{user.email}</span>
                     </div>
+                    {user.email === ADMIN_EMAIL && (
+                      <Link to="/admin" className="user-dropdown-item">
+                        <LayoutDashboard size={15} />
+                        Admin Dashboard
+                      </Link>
+                    )}
                     <Link to="/account/orders" className="user-dropdown-item">
                       <ClipboardList size={15} />
                       My Orders
