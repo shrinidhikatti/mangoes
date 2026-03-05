@@ -82,7 +82,7 @@ export default function HomePage() {
           <div className="hero-text">
             <div className="hero-badge animate-fade-in-up">
               <Leaf size={14} />
-              <span>Season 2026 — Fresh Arrivals</span>
+              <span> Fresh Arrivals</span>
             </div>
             <h1 className="hero-title animate-fade-in-up delay-1">
               Season's finest,<br />

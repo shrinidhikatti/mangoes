@@ -78,12 +78,15 @@
   font-weight: 600;
   margin-bottom: var(--space-lg);
 }
+.hero-badge {
+  float: right;
+}
 
 .hero-title {
   font-size: clamp(2.5rem, 6vw, 4.2rem);
   font-weight: 800;
-  line-height: 1.08;
-  letter-spacing: -0.03em;
+  /* line-height: 1.08; */
+  /* letter-spacing: -0.03em; */
   color: var(--earth-900);
   margin-bottom: var(--space-lg);
 }
@@ -907,7 +910,8 @@
 @media (max-width: 768px) {
   .hero {
     min-height: 100svh;
-    padding: var(--space-xl) 0 var(--space-lg);
+    padding: var(--space-sm) 0 var(--space-lg);
+     margin-top: -30px;   
     overflow: hidden;
   }
 
@@ -925,7 +929,7 @@
   /* Title size adjustment for mobile */
   .hero-title {
     font-size: clamp(1.8rem, 7vw, 2.4rem);
-    margin-bottom: var(--space-sm);
+    /* margin-bottom: var(--space-sm); */
   }
 
   .hero-subtitle {
