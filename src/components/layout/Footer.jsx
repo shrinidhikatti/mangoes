@@ -63,7 +63,7 @@ export default function Footer() {
           <div className="footer-bottom">
             <p>&copy; 2026 Mango Mane. All rights reserved.</p>
             <p className="footer-credit">
-              Made with <Heart size={12} fill="currentColor" /> in Karnataka
+              Made with <Heart size={12} fill="currentColor" /> by Shrinidhi Katti
             </p>
           </div>
         </div>

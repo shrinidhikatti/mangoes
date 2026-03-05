@@ -84,6 +84,16 @@ export async function getTodayOrders() {
   return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 }
 
+export async function getOrdersByUser(uid) {
+  const q = query(
+    collection(db, COLLECTION),
+    where('userId', '==', uid),
+    orderBy('createdAt', 'desc')
+  );
+  const snapshot = await getDocs(q);
+  return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+}
+
 export async function getOrdersByDateRange(startDate, endDate) {
   const q = query(
     collection(db, COLLECTION),

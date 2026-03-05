@@ -16,6 +16,58 @@
   padding: var(--space-3xl) var(--space-2xl);
 }
 
+.confirmation-signup-prompt {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  background: var(--gold-50);
+  border: 1px solid var(--gold-200);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  text-align: left;
+}
+
+.confirmation-signup-prompt svg {
+  color: var(--gold-600);
+  flex-shrink: 0;
+}
+
+.confirmation-signup-prompt strong {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+.confirmation-signup-prompt p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin: 2px 0 0;
+}
+
+.confirmation-actions {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 480px) {
+  .confirmation-signup-prompt {
+    flex-wrap: wrap;
+  }
+  .confirmation-signup-prompt a {
+    width: 100%;
+    text-align: center;
+  }
+  .confirmation-actions {
+    flex-direction: column;
+  }
+  .confirmation-actions a {
+    width: 100%;
+  }
+}
+
 .confirmation-icon {
   color: var(--green-500);
   margin-bottom: var(--space-lg);

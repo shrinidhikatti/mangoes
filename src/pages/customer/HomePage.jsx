@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Truck, Shield, Clock, Leaf } from 'lucide-react';
+import { ArrowRight, Truck, Shield, Clock, Leaf, ChevronLeft, ChevronRight } from 'lucide-react';
 import { getActiveCategories, getAvailableProducts, getConfig } from '../../services/dataService';
 import ProductCard from '../../components/product/ProductCard';
 import Button from '../../components/ui/Button';
@@ -12,6 +12,26 @@ export default function HomePage() {
   const [products, setProducts] = useState([]);
   const [config, setConfig] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const timerRef = useRef(null);
+
+  const carouselImages = [
+    { src: '/m1.avif', alt: 'Fresh mangoes' },
+    { src: '/m2.avif', alt: 'Premium alphonso mangoes' },
+    { src: 'https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?w=500&h=600&fit=crop', alt: 'Fresh mango harvest' },
+    { src: 'https://images.unsplash.com/photo-1591073113125-e46713c829ed?w=500&h=600&fit=crop', alt: 'Ripe alphonso mangoes' },
+  ];
+
+  const goToSlide = (index) => {
+    setActiveSlide((index + carouselImages.length) % carouselImages.length);
+  };
+
+  useEffect(() => {
+    timerRef.current = setInterval(() => {
+      setActiveSlide(prev => (prev + 1) % carouselImages.length);
+    }, 4000);
+    return () => clearInterval(timerRef.current);
+  }, []);
 
   useEffect(() => {
     async function fetchData() {
@@ -86,16 +106,42 @@ export default function HomePage() {
           </div>
           <div className="hero-visual animate-fade-in-up delay-2">
             <div className="hero-image-stack">
-              <div className="hero-image hero-image--main">
-                <img
-                  src="https://images.unsplash.com/photo-1553279768-865429fa0078?w=500&h=600&fit=crop"
-                  alt="Fresh Alphonso Mangoes"
-                />
+              <div className="hero-carousel">
+                {carouselImages.map((img, i) => (
+                  <div key={i} className={`hero-carousel-slide ${i === activeSlide ? 'active' : ''}`}>
+                    <img src={img.src} alt={img.alt} />
+                  </div>
+                ))}
+                <button
+                  className="carousel-btn carousel-btn--prev"
+                  onClick={() => { goToSlide(activeSlide - 1); clearInterval(timerRef.current); }}
+                  aria-label="Previous"
+                >
+                  <ChevronLeft size={18} />
+                </button>
+                <button
+                  className="carousel-btn carousel-btn--next"
+                  onClick={() => { goToSlide(activeSlide + 1); clearInterval(timerRef.current); }}
+                  aria-label="Next"
+                >
+                  <ChevronRight size={18} />
+                </button>
+                <div className="carousel-dots">
+                  {carouselImages.map((_, i) => (
+                    <button
+                      key={i}
+                      className={`carousel-dot ${i === activeSlide ? 'active' : ''}`}
+                      onClick={() => { goToSlide(i); clearInterval(timerRef.current); }}
+                      aria-label={`Go to slide ${i + 1}`}
+                    />
+                  ))}
+                </div>
               </div>
+
               <div className="hero-image hero-image--secondary">
                 <img
-                  src="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?w=300&h=300&fit=crop"
-                  alt="Mango harvest"
+                  src="/m3.avif"
+                  alt="Sun-ripened mangoes"
                 />
               </div>
               <div className="hero-floating-card">
@@ -194,7 +240,7 @@ export default function HomePage() {
             <div className="story-images">
               <div className="story-image story-image--large">
                 <img
-                  src="https://images.unsplash.com/photo-1553279768-865429fa0078?w=500&h=400&fit=crop"
+                  src="/m1.avif"
                   alt="Mango orchard"
                   loading="lazy"
                 />

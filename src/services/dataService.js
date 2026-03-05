@@ -122,6 +122,11 @@ export async function updateOrderStatus(id, newStatus, note = '') {
   return orderService.updateOrderStatus(id, newStatus, note);
 }
 
+export async function getOrdersByUser(uid) {
+  if (!USE_FIREBASE) return mockOrders.filter(o => o.userId === uid);
+  return orderService.getOrdersByUser(uid);
+}
+
 // ===== CATEGORIES =====
 
 export async function getCategories() {

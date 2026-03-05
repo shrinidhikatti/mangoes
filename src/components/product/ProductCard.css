@@ -50,6 +50,17 @@
   opacity: 1;
 }
 
+/* Always show CTA on touch devices (no hover) */
+@media (hover: none) {
+  .product-card-overlay {
+    opacity: 1;
+    background: linear-gradient(to top, rgba(26, 22, 16, 0.45), transparent 50%);
+  }
+  .product-card-cta {
+    transform: translateY(0);
+  }
+}
+
 .product-card-cta {
   display: flex;
   align-items: center;

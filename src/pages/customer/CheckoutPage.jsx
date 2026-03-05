@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { ArrowLeft, MapPin, Calendar, Lock } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
+import { useAuth } from '../../context/AuthContext';
 import { getConfig, createOrder } from '../../services/dataService';
 import { initiatePayment } from '../../services/razorpayService';
 import { formatPrice, calculateDeliveryCharge, getEstimatedDeliveryDate, formatDate, generateOrderNumber } from '../../utils/helpers';
@@ -11,12 +12,13 @@ import './CheckoutPage.css';
 
 export default function CheckoutPage() {
   const { items, subtotal, clearCart } = useCart();
+  const { user } = useAuth();
   const navigate = useNavigate();
   const [config, setConfig] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const [form, setForm] = useState({
-    name: '',
+    name: user?.displayName || '',
     phone: '',
     fullAddress: '',
     landmark: '',
@@ -131,7 +133,8 @@ export default function CheckoutPage() {
         razorpayPaymentId: paymentResult.razorpayPaymentId,
         razorpayOrderId: paymentResult.razorpayOrderId,
         deliveryMode: 'self',
-        estimatedDeliveryDate: estimatedDate.toISOString().split('T')[0]
+        estimatedDeliveryDate: estimatedDate.toISOString().split('T')[0],
+        userId: user?.uid || null
       };
 
       await createOrder(orderData);
