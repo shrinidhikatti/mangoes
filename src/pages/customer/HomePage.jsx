@@ -89,7 +89,7 @@ export default function HomePage() {
               <span className="hero-title-accent">at your</span> door.
             </h1>
             <p className="hero-subtitle animate-fade-in-up delay-2">
-              Premium Alphonso mangoes, traditional sweets, and North Karnataka
+              Premium Alphonso mangoes, traditional sweets, and seasonal
               delicacies — harvested with care and delivered fresh across Bangalore.
             </p>
             <div className="hero-actions animate-fade-in-up delay-3">
@@ -236,7 +236,7 @@ export default function HomePage() {
           <div className="section-header">
             <div>
               <h2 className="section-title">Shop by Category</h2>
-              <p className="section-subtitle">Explore our curated selection of North Karnataka's finest</p>
+              <p className="section-subtitle">Explore our curated selection of seasonal favourites</p>
             </div>
           </div>
           <div className="category-grid">
@@ -313,9 +313,8 @@ export default function HomePage() {
               </h2>
               <p>
                 We're a family that believes in the simple joy of fresh, naturally
-                ripened fruit. Our mangoes are handpicked from family-owned orchards
-                in North Karnataka — a region renowned for producing some of
-                India's finest mangoes.
+                ripened fruit. Our mangoes are handpicked from our family-owned orchards,
+                renowned for producing some of India's finest mangoes.
               </p>
               <p>
                 No cold storage, no artificial ripening. Just sun-ripened goodness

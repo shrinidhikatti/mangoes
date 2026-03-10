@@ -6,7 +6,7 @@ export const mockCategories = [
     image: '/mango1.jpg',
     isActive: true,
     sortOrder: 1,
-    description: 'Premium varieties from North Karnataka orchards'
+    description: 'Premium varieties from family-owned orchards'
   },
   {
     id: 'cat-2',
@@ -15,7 +15,7 @@ export const mockCategories = [
     image: '/mango5.jpg',
     isActive: true,
     sortOrder: 2,
-    description: 'Traditional North Karnataka delicacies'
+    description: 'Traditional handcrafted delicacies'
   },
   {
     id: 'cat-3',
@@ -33,7 +33,7 @@ export const mockProducts = [
     id: 'prod-1',
     name: 'Alphonso Mango',
     category: 'mangoes',
-    description: 'The king of mangoes. Premium Alphonso (Hapus) mangoes handpicked from our family orchards in North Karnataka. Known for their rich, creamy texture and intensely sweet flavor with hints of citrus. Each mango is naturally ripened for perfect taste.',
+    description: 'The king of mangoes. Premium Alphonso (Hapus) mangoes handpicked from our family orchards. Known for their rich, creamy texture and intensely sweet flavor with hints of citrus. Each mango is naturally ripened for perfect taste.',
     images: ['/mango1.jpg', '/mango2.jpg'],
     variants: [
       { label: '1 Dozen (12 pcs)', price: 600, weight: 3 },
@@ -51,7 +51,7 @@ export const mockProducts = [
     id: 'prod-2',
     name: 'Badami Mango',
     category: 'mangoes',
-    description: 'Also called Karnataka Alphonso, Badami mangoes are a regional pride. Slightly less sweet than Alphonso but incredibly aromatic. Their smooth, fiberless flesh melts in your mouth. Sourced from family-owned orchards in North Karnataka.',
+    description: 'Badami mangoes are a beloved variety, slightly less sweet than Alphonso but incredibly aromatic. Their smooth, fiberless flesh melts in your mouth. Sourced from our family-owned orchards.',
     images: ['/mango3.jpg', '/mango4.jpg'],
     variants: [
       { label: '1 Dozen (12 pcs)', price: 400, weight: 3 },
@@ -87,9 +87,9 @@ export const mockProducts = [
   },
   {
     id: 'prod-4',
-    name: 'Belagavi Kunda',
+    name: 'Kunda',
     category: 'sweets',
-    description: 'The legendary Belagavi Kunda — a rich, caramelized milk sweet that\'s a hallmark of North Karnataka. Made with traditional methods by local artisans, this golden-brown delicacy is slow-cooked for hours to achieve its signature grainy texture and deep caramel flavor.',
+    description: 'A legendary rich, caramelized milk sweet. Made with traditional methods by local artisans, this golden-brown delicacy is slow-cooked for hours to achieve its signature grainy texture and deep caramel flavor.',
     images: [
       '/mango6.jpg'
     ],
@@ -125,7 +125,7 @@ export const mockProducts = [
     id: 'prod-6',
     name: 'Black Grapes (Bangalore Blue)',
     category: 'fruits',
-    description: 'Sweet and juicy Bangalore Blue grapes, freshly harvested from the vineyards of North Karnataka. Deep purple-black color with a rich, sweet-tangy flavor. Perfect for eating fresh or making juice.',
+    description: 'Sweet and juicy Bangalore Blue grapes, freshly harvested from local vineyards. Deep purple-black color with a rich, sweet-tangy flavor. Perfect for eating fresh or making juice.',
     images: [
       '/mango2.jpg'
     ],
@@ -190,7 +190,7 @@ export const mockOrders = [
       },
       {
         productId: 'prod-4',
-        productName: 'Belagavi Kunda',
+        productName: 'Kunda',
         variantLabel: '500 gm Box',
         price: 380,
         quantity: 2,

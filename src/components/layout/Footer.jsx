@@ -24,7 +24,7 @@ export default function Footer() {
                 </div>
               </div>
               <p className="footer-desc">
-                Premium mangoes and North Karnataka specialties delivered fresh
+                Premium mangoes and seasonal specialties delivered fresh
                 to your doorstep in Bangalore. Straight from our farms.
               </p>
             </div>
