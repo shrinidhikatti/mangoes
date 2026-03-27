@@ -25,6 +25,15 @@ export const mockCategories = [
     isActive: true,
     sortOrder: 3,
     description: 'Seasonal fresh fruits from local farms'
+  },
+  {
+    id: 'cat-4',
+    name: 'Namkeen',
+    slug: 'namkeen',
+    image: '/bshev.jpeg',
+    isActive: true,
+    sortOrder: 4,
+    description: 'Authentic Belagavi savoury snacks made in small batches'
   }
 ];
 
@@ -120,6 +129,98 @@ export const mockProducts = [
     unit: 'gm',
     isAvailable: true,
     sortOrder: 2
+  },
+  {
+    id: 'prod-7',
+    name: 'Barik Sev',
+    category: 'namkeen',
+    description: 'Also known as Nylon Sev. A popular namkeen snack loved for its thin, crispy texture and incredible versatility. Made from gram flour, it is the go-to savoury topping for chaats like bhel, masala puri, pani puri, poha, and upma — or enjoyed alone.',
+    images: ['/bshev.jpeg'],
+    variants: [
+      { label: '150 gm Pack', price: 80, weight: 0.15 },
+      { label: '300 gm Pack', price: 150, weight: 0.30 },
+      { label: '500 gm Pack', price: 230, weight: 0.50 }
+    ],
+    stockQuantity: 50,
+    unit: 'gm',
+    isAvailable: true,
+    sortOrder: 1
+  },
+  {
+    id: 'prod-8',
+    name: 'Chota Mixture',
+    category: 'namkeen',
+    description: 'Everyone\'s tea-time favourite namkeen. Made from gram flour with fried parched rice, chickpeas, and groundnuts. Mildly spicy — can be used as a topping for misal or mixed with puffed rice. Prepared in small batches to retain freshness.',
+    images: ['/cmixture.jpeg'],
+    variants: [
+      { label: '150 gm Pack', price: 80, weight: 0.15 },
+      { label: '300 gm Pack', price: 150, weight: 0.30 },
+      { label: '500 gm Pack', price: 230, weight: 0.50 }
+    ],
+    stockQuantity: 50,
+    unit: 'gm',
+    isAvailable: true,
+    sortOrder: 2
+  },
+  {
+    id: 'prod-9',
+    name: 'Masala Toast',
+    category: 'namkeen',
+    description: 'A true Belagavi classic. Bread pieces roasted to the crunchiest texture, then coated with a special dry chutney powder. Enjoyed as an evening snack with chai or as a wholesome breakfast.',
+    images: ['/mtoast.jpeg'],
+    variants: [
+      { label: '200 gm Pack', price: 100, weight: 0.20 },
+      { label: '400 gm Pack', price: 180, weight: 0.40 }
+    ],
+    stockQuantity: 40,
+    unit: 'gm',
+    isAvailable: true,
+    sortOrder: 3
+  },
+  {
+    id: 'prod-10',
+    name: 'Plain Toast',
+    category: 'namkeen',
+    description: 'Made from high-quality bread baked to golden, crispy perfection. Enjoy plain, with butter, or with your favourite spreads. Also pairs beautifully with soups. A pantry staple that never goes out of style.',
+    images: ['/ptoast.jpeg'],
+    variants: [
+      { label: '200 gm Pack', price: 80, weight: 0.20 },
+      { label: '400 gm Pack', price: 150, weight: 0.40 }
+    ],
+    stockQuantity: 40,
+    unit: 'gm',
+    isAvailable: true,
+    sortOrder: 4
+  },
+  {
+    id: 'prod-11',
+    name: 'Khari Biscuit',
+    category: 'namkeen',
+    description: 'Eggless khari biscuits that melt in the mouth like butter. Made from all-purpose flour, loved by both kids and adults. Crunchy, flaky, and light on the stomach — the perfect chai-time companion.',
+    images: ['/kbiscut.jpeg'],
+    variants: [
+      { label: '150 gm Pack', price: 70, weight: 0.15 },
+      { label: '300 gm Pack', price: 130, weight: 0.30 }
+    ],
+    stockQuantity: 60,
+    unit: 'gm',
+    isAvailable: true,
+    sortOrder: 5
+  },
+  {
+    id: 'prod-12',
+    name: 'Methi Khari',
+    category: 'namkeen',
+    description: 'Khari biscuit with a twist — infused with the unique flavour of fenugreek (methi). This irresistible taste won\'t let you eat just one. Crunchy, aromatic, and light on the stomach.',
+    images: ['/mbiscut.jpeg'],
+    variants: [
+      { label: '150 gm Pack', price: 80, weight: 0.15 },
+      { label: '300 gm Pack', price: 150, weight: 0.30 }
+    ],
+    stockQuantity: 60,
+    unit: 'gm',
+    isAvailable: true,
+    sortOrder: 6
   },
   {
     id: 'prod-6',

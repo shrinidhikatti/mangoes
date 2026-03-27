@@ -16,10 +16,10 @@ export default function HomePage() {
   const timerRef = useRef(null);
 
   const carouselImages = [
-    { src: '/mango1.jpg', alt: 'Fresh mango harvest' },
-    { src: '/mango2.jpg', alt: 'Premium alphonso mangoes' },
-    { src: '/mango3.jpg', alt: 'Ripe alphonso mangoes' },
-    { src: '/mango4.jpg', alt: 'Alphonso mangoes' },
+    { src: '/a5.jpeg', alt: 'Premium boxed Alphonso mangoes' },
+    { src: '/a4.jpeg', alt: 'Saffron-colored Alphonso flesh' },
+    { src: '/a3.jpeg', alt: 'Alphonso mangoes from Ratnagiri' },
+    { src: '/a2.jpeg', alt: 'Golden ripe Alphonso mangoes' },
   ];
 
   const goToSlide = (index) => {
@@ -85,12 +85,14 @@ export default function HomePage() {
               <span> Fresh Arrivals</span>
             </div>
             <h1 className="hero-title animate-fade-in-up delay-1">
-              Season's finest,<br />
-              <span className="hero-title-accent">at your</span> door.
+              Mango<br />
+              <span className="hero-title-accent">Mania</span>
             </h1>
             <p className="hero-subtitle animate-fade-in-up delay-2">
-              Premium Alphonso mangoes, traditional sweets, and seasonal
-              delicacies — harvested with care and delivered fresh across Bangalore.
+              The King of mangoes <strong>ALPHONSO</strong> is back in the market!
+              Sourced from the farmers of Ratnagiri and Devgad. Organically grown, export quality, naturally ripened.
+              Golden-yellow skin with a reddish blush; saffron-colored flesh makes it the best variety of mango in the market.
+              Its sweet, tropical aroma cultivated along Maharashtra's Konkan coast and creamy, non-fibrous flesh makes one crave for more.
             </p>
             <div className="hero-actions animate-fade-in-up delay-3">
               <Link to="/products/mangoes">
@@ -133,10 +135,10 @@ export default function HomePage() {
                 </div>
               </div>
               <div className="hero-card-tr">
-                <img src="/mango5.jpg" alt="Premium mangoes" />
+                <img src="/a1.jpeg" alt="Premium mangoes" />
               </div>
               <div className="hero-card-bl">
-                <img src="/mango6.jpg" alt="Alphonso mangoes" />
+                <img src="/a5.jpeg" alt="Alphonso mangoes" />
               </div>
               <div className="hero-card-float-tl">
                 <span>🥭</span>
@@ -189,7 +191,7 @@ export default function HomePage() {
 
               <div className="hero-image hero-image--secondary">
                 <img
-                  src="/mango7.jpg"
+                  src="/a4.jpeg"
                   alt="Sun-ripened mangoes"
                 />
               </div>
@@ -292,14 +294,14 @@ export default function HomePage() {
             <div className="story-images">
               <div className="story-image story-image--large">
                 <img
-                  src="/mango1.jpg"
+                  src="/a2.jpeg"
                   alt="Mango orchard"
                   loading="lazy"
                 />
               </div>
               <div className="story-image story-image--small">
                 <img
-                  src="/mango4.jpg"
+                  src="/a4.jpeg"
                   alt="Fresh mangoes"
                   loading="lazy"
                 />

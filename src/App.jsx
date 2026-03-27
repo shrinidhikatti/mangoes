@@ -18,6 +18,7 @@ import CheckoutPage from './pages/customer/CheckoutPage';
 import OrderConfirmationPage from './pages/customer/OrderConfirmationPage';
 import LoginPage from './pages/customer/LoginPage';
 import OrderHistoryPage from './pages/customer/OrderHistoryPage';
+import NamkeenPage from './pages/customer/NamkeenPage';
 
 // Admin Pages
 import DashboardPage from './pages/admin/DashboardPage';
@@ -64,6 +65,7 @@ export default function App() {
             <Route path="/cart" element={<CustomerLayout><CartPage /></CustomerLayout>} />
             <Route path="/checkout" element={<CustomerLayout><CheckoutPage /></CustomerLayout>} />
             <Route path="/order-confirmed" element={<CustomerLayout><OrderConfirmationPage /></CustomerLayout>} />
+            <Route path="/namkeen" element={<CustomerLayout><NamkeenPage /></CustomerLayout>} />
 
             {/* Auth */}
             <Route path="/login" element={<GuestRoute><CustomerLayout><LoginPage /></CustomerLayout></GuestRoute>} />

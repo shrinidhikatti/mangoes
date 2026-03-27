@@ -79,6 +79,7 @@ export default function Header() {
             <Link to="/products/mangoes" className={`nav-link ${location.pathname.includes('mangoes') ? 'nav-link--active' : ''}`}>Mangoes</Link>
             <Link to="/products/sweets" className={`nav-link ${location.pathname.includes('sweets') ? 'nav-link--active' : ''}`}>Sweets</Link>
             <Link to="/products/fruits" className={`nav-link ${location.pathname.includes('fruits') ? 'nav-link--active' : ''}`}>Fruits</Link>
+            <Link to="/namkeen" className={`nav-link ${location.pathname === '/namkeen' ? 'nav-link--active' : ''}`}>Namkeen</Link>
           </nav>
 
           <div className="header-actions">
